@@ -20,7 +20,7 @@ jobs:
 
     - name: Publish production code to separate repo
       run: |
-        git clone git@github.com:gjovanovicst/deploy-site.git
+        git clone https://github.com/gjovanovicst/deploy-site.git
         cd deploy-site
         git checkout main
         git remote add origin git@github.com:gjovanovicst/deploy-site-production.git
@@ -39,7 +39,7 @@ jobs:
 
     - name: Publish preview code to separate repo
       run: |
-        git clone git@github.com:gjovanovicst/deploy-site.git
+        git clone https://github.com/gjovanovicst/deploy-site.git
         cd deploy-site
         git checkout develop
         git remote add origin git@github.com:gjovanovicst/deploy-site-preview.git
