@@ -11,36 +11,28 @@ jobs:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+    - name: Push generated webpage to another repository production
+      uses: nkoppel/push-files-to-another-repository@1.1.0
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
       with:
-        ref: main
-        submodules: 'recursive'
-        ssh-key: ${{ secrets.DEPLOY_KEY }}
-
-    - name: Publish production code to separate repo
-      run: |
-        git clone https://github.com/gjovanovicst/deploy-site.git
-        cd deploy-site
-        git checkout main
-        git remote add origin git@github.com:gjovanovicst/deploy-site-production.git
-        git push -u origin main
+        source-files: 'deploy-site/'
+        destination-username: 'gjovanovicst'
+        destination-repository: 'gjovanovicst.github.io'
+        destination-directory: '/deploy-site-production'
+        commit-email: 'gjovanovic.st@gmail.com'
 
   deploy_preview:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/develop'
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+    - name: Push generated webpage to another repository preview
+      uses: nkoppel/push-files-to-another-repository@1.1.0
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
       with:
-        ref: develop
-        submodules: 'recursive'
-        ssh-key: ${{ secrets.DEPLOY_KEY }}
-
-    - name: Publish preview code to separate repo
-      run: |
-        git clone https://github.com/gjovanovicst/deploy-site.git
-        cd deploy-site
-        git checkout develop
-        git remote add origin git@github.com:gjovanovicst/deploy-site-preview.git
-        git push -u origin main
+        source-files: 'deploy-site/'
+        destination-username: 'gjovanovicst'
+        destination-repository: 'gjovanovicst.github.io'
+        destination-directory: 'deploy-site-preview/'
+        commit-email: 'gjovanovic.st@gmail.com'
