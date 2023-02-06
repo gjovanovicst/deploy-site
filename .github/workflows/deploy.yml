@@ -18,8 +18,8 @@ jobs:
       with:
         source-files: 'deploy-site/'
         destination-username: 'gjovanovicst'
-        destination-repository: 'gjovanovicst.github.io'
-        destination-directory: 'deploy-site-production/'
+        destination-repository: 'deploy-site-production'
+        destination-directory: 'deploy-site-production'
         commit-email: 'gjovanovic.st@gmail.com'
 
   deploy_preview:
@@ -33,6 +33,6 @@ jobs:
       with:
         source-files: 'deploy-site/'
         destination-username: 'gjovanovicst'
-        destination-repository: 'gjovanovicst.github.io'
-        destination-directory: 'deploy-site-preview/'
+        destination-repository: 'deploy-site-preview'
+        destination-directory: 'deploy-site-preview'
         commit-email: 'gjovanovic.st@gmail.com'
