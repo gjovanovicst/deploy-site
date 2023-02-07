@@ -11,28 +11,38 @@ jobs:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
     steps:
-    - name: Push generated webpage to another repository production
-      uses: nkoppel/push-files-to-another-repository@v1.1.0
-      env:
-        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-      with:
-        source-files: 'www/'
-        destination-username: 'gjovanovicst'
-        destination-repository: 'deploy-site-production'
-        destination-directory: 'deploy-site-production'
-        commit-email: 'gjovanovic.st@gmail.com'
+      - name: Push directory to another repository
+        uses: cpina/github-action-push-to-another-repository@v1.2
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        with:
+          source-directory: "www"
+          destination-github-username: "gjovanovicst"
+          destination-repository-name: "deploy-site-production"
+          user-email: 'gjovanovic.st@gmail.com'
 
-  deploy_preview:
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/develop'
-    steps:
-    - name: Push generated webpage to another repository preview
-      uses: nkoppel/push-files-to-another-repository@v1.1.0
-      env:
-        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-      with:
-        source-files: 'webpage/'
-        destination-username: 'gjovanovicst'
-        destination-repository: 'deploy-site-preview'
-        destination-directory: 'deploy-site-preview'
-        commit-email: 'gjovanovic.st@gmail.com'
+#       - name: Push generated webpage to another repository production
+#         uses: nkoppel/push-files-to-another-repository@v1.1.0
+#         env:
+#           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+#         with:
+#           source-files: 'www/'
+#           destination-username: 'gjovanovicst'
+#           destination-repository: 'deploy-site-production'
+#           destination-directory: 'deploy-site-production'
+#           commit-email: 'gjovanovic.st@gmail.com'
+
+#   deploy_preview:
+#     runs-on: ubuntu-latest
+#     if: github.ref == 'refs/heads/develop'
+#     steps:
+#     - name: Push generated webpage to another repository preview
+#       uses: nkoppel/push-files-to-another-repository@v1.1.0
+#       env:
+#         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+#       with:
+#         source-files: 'webpage/'
+#         destination-username: 'gjovanovicst'
+#         destination-repository: 'deploy-site-preview'
+#         destination-directory: 'deploy-site-preview'
+#         commit-email: 'gjovanovic.st@gmail.com'
