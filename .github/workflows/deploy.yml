@@ -17,7 +17,7 @@ jobs:
            env:
              API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
            with:
-            source-directory: www/
+            source-directory: .
             destination-github-username: 'gjovanovicst'
             destination-repository-name: 'deploy-site-production'
             user-email: gjovanovic.st@gmail.com
