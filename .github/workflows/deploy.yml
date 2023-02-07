@@ -16,7 +16,7 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          source-files: 'www/*'
+          source-files: 'test.txt'
           destination-username: 'gjovanovicst'
           destination-repository: 'deploy-site-production'
           destination-directory: 'deploy-site-production'
