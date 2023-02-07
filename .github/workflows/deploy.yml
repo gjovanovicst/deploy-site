@@ -11,25 +11,16 @@ jobs:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
     steps:
-      - name: Push directory to another repository
-        uses: cpina/github-action-push-to-another-repository@v1.2
+      - name: Push generated webpage to another repository production
+        uses: nkoppel/push-files-to-another-repository@v1.1.0
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          destination-github-username: "gjovanovicst"
-          destination-repository-name: "deploy-site-production"
-          user-email: 'gjovanovic.st@gmail.com'
-
-#       - name: Push generated webpage to another repository production
-#         uses: nkoppel/push-files-to-another-repository@v1.1.0
-#         env:
-#           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-#         with:
-#           source-files: 'www/'
-#           destination-username: 'gjovanovicst'
-#           destination-repository: 'deploy-site-production'
-#           destination-directory: 'deploy-site-production'
-#           commit-email: 'gjovanovic.st@gmail.com'
+          source-files: './www/'
+          destination-username: 'gjovanovicst'
+          destination-repository: 'deploy-site-production'
+          destination-directory: 'deploy-site-production'
+          commit-email: 'gjovanovic.st@gmail.com'
 
 #   deploy_preview:
 #     runs-on: ubuntu-latest
