@@ -16,7 +16,7 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         run: |
-                git clone https://.:${{ secrets.API_TOKEN_GITHUB }}@github.com/deploy-site
+                git clone https://.:${{ secrets.GITHUB_TOKEN }}@github.com/deploy-site
                 rm everything but the .git directory
                 copy www https://github.com/gjovanovicst/deploy-site-production.git
                 cd https://github.com/gjovanovicst/deploy-site-production.git
