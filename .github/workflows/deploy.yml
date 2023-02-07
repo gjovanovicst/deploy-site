@@ -16,7 +16,7 @@ jobs:
       env:
         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
       with:
-        source-files: 'index.html'
+        source-files: '/'
         destination-username: 'gjovanovicst'
         destination-repository: 'deploy-site-production'
         destination-directory: 'deploy-site-production'
@@ -31,7 +31,7 @@ jobs:
       env:
         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
       with:
-        source-files: 'index.html'
+        source-files: '/'
         destination-username: 'gjovanovicst'
         destination-repository: 'deploy-site-preview'
         destination-directory: 'deploy-site-preview'
