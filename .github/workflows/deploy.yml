@@ -11,18 +11,49 @@ jobs:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
     steps:
-         - name: Pushes to another repository
-           id: push_directory
-           uses: cpina/github-action-push-to-another-repository@main
-           env:
-             API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-           with:
-            source-directory: /
-            destination-github-username: 'gjovanovicst'
-            destination-repository-name: 'deploy-site-production'
-            user-email: gjovanovic.st@gmail.com
-            commit-message: See ORIGIN_COMMIT from $GITHUB_REF
-            target-branch: main
+      - name: Checkout Main Project
+        uses: actions/checkout@v2
+        with:
+          path: ./deploy-site
+
+      - name: Checkout Production Project
+        uses: actions/checkout@master
+        with:
+          repository: gjovanovicst/deploy-site-production
+          token: ${{ secrets.ACCESS_TOKEN }}
+          path: ./deploy-site-production
+
+      - name: Copy/Create file
+        run: |
+          FILES=./deploy-site/www
+          if [ -d "$FILES" ]; then
+            echo "Copying $FILES"
+            cp -R ./deploy-site/www ./projectB
+          else 
+            echo "Tere is no www folder. Make sure that you build site."
+          fi
+      - name: Push Deployment Production project
+        run: |
+          cd ./deploy-site-production
+          git add .
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git commit -am "File Replicated from deploy-site-production"
+          git push
+    # steps:
+    #      - name: Pushes to another repository
+    #        id: push_directory
+    #        uses: cpina/github-action-push-to-another-repository@main
+    #        env:
+    #          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+    #        with:
+    #         source-directory: /
+    #         destination-github-username: 'gjovanovicst'
+    #         destination-repository-name: 'deploy-site-production'
+    #         user-email: gjovanovic.st@gmail.com
+    #         commit-message: See ORIGIN_COMMIT from $GITHUB_REF
+    #         target-branch: main
+
 #       - name: Push generated webpage to another repository production
 #         uses: nkoppel/push-files-to-another-repository@v1.1.0
 #         env:
