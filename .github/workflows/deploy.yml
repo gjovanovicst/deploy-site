@@ -15,20 +15,12 @@ jobs:
 #         uses: nkoppel/push-files-to-another-repository@v1.1.0
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-        run: |
-                git clone https://github.com/gjovanovicst/deploy-site.git
-                rm everything but the .git directory
-                copy www https://github.com/gjovanovicst/deploy-site-production.git
-                cd https://github.com/gjovanovicst/deploy-site-production.git
-                git add .
-                git diff-index --quiet HEAD || git commit -m "Automatic publish from github.com/project"
-                git push target master
-#         with:
-#           source-files: 'www/index.html'
-#           destination-username: 'gjovanovicst'
-#           destination-repository: 'deploy-site-production'
-#           destination-directory: 'deploy-site-production'
-#           commit-email: 'gjovanovic.st@gmail.com'
+        with:
+          source-files: '.'
+          destination-username: 'gjovanovicst'
+          destination-repository: 'deploy-site-production'
+          destination-directory: 'deploy-site-production'
+          commit-email: 'gjovanovic.st@gmail.com'
 
 #   deploy_preview:
 #     runs-on: ubuntu-latest
