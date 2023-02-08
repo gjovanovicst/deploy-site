@@ -4,7 +4,7 @@
   "description": "Simple deploy site project demonstrates multiple environments deploy workflow",
   "main": "www/index.html",
   "scripts": {
-    "build": "mkdir -p www && cp index.html ./www"
+    "build": "mkdir -p www && cp *.html package.json ./www"
   },
   "repository": {
     "type": "git",
