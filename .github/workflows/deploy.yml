@@ -18,6 +18,16 @@ jobs:
         uses: actions/checkout@v2
         with:
           path: ./deploy-site
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Code
+        run: npm run build
 
       - name: Checkout Production Project
         uses: actions/checkout@master
@@ -25,17 +35,6 @@ jobs:
           repository: gjovanovicst/deploy-site-production
           token: ${{ secrets.ACCESS_TOKEN }}
           path: ./deploy-site-production
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14
-
-      - name: Install dependencies
-        run: rm -rf node_modules package-lock.json && npm install
-
-      - name: Build Code
-        run: npm run build
 
       - name: Copy/Create file
         run: |
@@ -66,6 +65,16 @@ jobs:
         uses: actions/checkout@v2
         with:
           path: ./deploy-site
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Code
+        run: npm run build
 
       - name: Checkout Preview Project
         uses: actions/checkout@master
@@ -73,17 +82,6 @@ jobs:
           repository: gjovanovicst/deploy-site-preview
           token: ${{ secrets.ACCESS_TOKEN }}
           path: ./deploy-site-preview
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14
-
-      - name: Install dependencies
-        run: rm -rf node_modules package-lock.json && npm install
-
-      - name: Build Code
-        run: npm run build
 
       - name: Copy/Create file
         run: |
