@@ -28,7 +28,7 @@ jobs:
           FILES=./deploy-site/www
           if [ -d "$FILES" ]; then
             echo "Copying $FILES"
-            cp -R ./deploy-site/www/* ./deploy-site-production/*
+            cp -R ./deploy-site/www/* ./deploy-site-production
           else 
             echo "There is no www folder. Make sure that you build site."
           fi
