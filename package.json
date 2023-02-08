@@ -2,7 +2,7 @@
   "name": "deploy-site",
   "version": "1.0.0",
   "description": "Simple deploy site project demonstrates multiple environments deploy workflow",
-  "main": "index.html",
+  "main": "www/index.html",
   "scripts": {
     "build": "mkdir -p www && cp index.html ./www"
   },
