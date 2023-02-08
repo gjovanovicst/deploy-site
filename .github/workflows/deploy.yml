@@ -10,6 +10,9 @@ jobs:
   deploy_production:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
+    environment:
+      name: Production
+      url: https://gjovanovicst.github.io/deploy-site-production
     steps:
       - name: Checkout Main Project
         uses: actions/checkout@v2
@@ -35,6 +38,43 @@ jobs:
       - name: Push Deployment Production project
         run: |
           cd ./deploy-site-production
+          git add .
+          git config user.name gjovanovicst
+          git config user.email gjovanovic.st@gmail.com
+          git commit -am "File Replicated from deploy-site"
+          git push
+
+  deploy_preview:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/develop'
+    environment:
+      name: Preview
+      url: https://gjovanovicst.github.io/deploy-site-preview
+    steps:
+      - name: Checkout Main Project
+        uses: actions/checkout@v2
+        with:
+          path: ./deploy-site
+
+      - name: Checkout Preview Project
+        uses: actions/checkout@master
+        with:
+          repository: gjovanovicst/deploy-site-preview
+          token: ${{ secrets.ACCESS_TOKEN }}
+          path: ./deploy-site-preview
+
+      - name: Copy/Create file
+        run: |
+          FILES=./deploy-site/www
+          if [ -d "$FILES" ]; then
+            echo "Copying $FILES"
+            cp -R ./deploy-site/www/* ./deploy-site-preview
+          else 
+            echo "There is no www folder. Make sure that you build site."
+          fi
+      - name: Push Deployment Preview project
+        run: |
+          cd ./deploy-site-preview
           git add .
           git config user.name gjovanovicst
           git config user.email gjovanovic.st@gmail.com
