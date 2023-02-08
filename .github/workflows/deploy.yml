@@ -10,6 +10,9 @@ jobs:
   deploy_production:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
+    environment:
+      name: Production
+      url: https://gjovanovicst.github.io/deploy-site-production
     steps:
       - name: Checkout Main Project
         uses: actions/checkout@v2
@@ -44,6 +47,9 @@ jobs:
   deploy_preview:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/develop'
+    environment:
+      name: Preview
+      url: https://gjovanovicst.github.io/deploy-site-preview
     steps:
       - name: Checkout Main Project
         uses: actions/checkout@v2
