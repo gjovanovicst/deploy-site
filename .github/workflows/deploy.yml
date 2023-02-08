@@ -24,7 +24,7 @@ jobs:
           node-version: 14
 
       - name: Install dependencies
-        run: rm -rf node_modules package-lock.json && npm install
+        run: npm ci
 
       - name: Build Code
         run: npm run build
@@ -71,7 +71,7 @@ jobs:
           node-version: 14
 
       - name: Install dependencies
-        run: rm -rf node_modules package-lock.json && npm install
+        run: npm ci
 
       - name: Build Code
         run: npm run build

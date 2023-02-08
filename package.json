@@ -2,9 +2,9 @@
   "name": "deploy-site",
   "version": "1.0.0",
   "description": "Simple deploy site project demonstrates multiple environments deploy workflow",
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
-    "build": "rm -rf www && mkdir -p www && cp index.html ./www"
+    "build": "mkdir -p www && cp index.html ./www"
   },
   "repository": {
     "type": "git",
