@@ -28,17 +28,17 @@ jobs:
           FILES=./deploy-site/www
           if [ -d "$FILES" ]; then
             echo "Copying $FILES"
-            cp -R ./deploy-site/www ./deploy-site-production
+            cp -R ./deploy-site/www ./deploy-site-production .
           else 
-            echo "Tere is no www folder. Make sure that you build site."
+            echo "There is no www folder. Make sure that you build site."
           fi
       - name: Push Deployment Production project
         run: |
           cd ./deploy-site-production
           git add .
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git commit -am "File Replicated from deploy-site-production"
+          git config user.name gjovanovicst
+          git config user.email gjovanovic.st@gmail.com
+          git commit -am "File Replicated from deploy-site"
           git push
     # steps:
     #      - name: Pushes to another repository
