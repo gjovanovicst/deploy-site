@@ -1,0 +1,25 @@
+{
+  "name": "deploy-site",
+  "version": "1.0.0",
+  "description": "Simple deploy site project demonstrates multiple environments deploy workflow",
+  "main": "index.js",
+  "scripts": {
+    "build": "mkdir -p www && cp index.html ./www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gjovanovicst/deploy-site.git"
+  },
+  "keywords": [
+    "gh-pages",
+    "environments",
+    "deployment",
+    "ci"
+  ],
+  "author": "Goran Jovanovic",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gjovanovicst/deploy-site/issues"
+  },
+  "homepage": "https://github.com/gjovanovicst/deploy-site#readme"
+}
