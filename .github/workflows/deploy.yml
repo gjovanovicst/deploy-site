@@ -24,6 +24,7 @@ jobs:
           node-version: 14
       - name: Clean Cache
         run: |
+          ls -la
           npm cache clean --force
       - name: CI Install
         run: |
