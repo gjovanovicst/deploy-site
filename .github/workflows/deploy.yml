@@ -9,6 +9,7 @@ on:
 jobs:
   deploy_production:
     runs-on: ubuntu-latest
+
     if: github.ref == 'refs/heads/main'
     environment:
       name: Production
@@ -17,14 +18,13 @@ jobs:
       - name: Checkout Main Project
         uses: actions/checkout@v2
         with:
-          path: ./deploy-site
+          path: deploy-site
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
           node-version: 14
       - name: Install dependencies
         run: |
-          cd deploy-site
           npm ci
       - name: Build Code
         run: |
@@ -65,7 +65,7 @@ jobs:
       - name: Checkout Main Project
         uses: actions/checkout@v2
         with:
-          path: ./deploy-site
+          path: deploy-site
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
@@ -73,11 +73,11 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd deploy-site
           npm ci
 
       - name: Build Code
-        run: npm run build
+        run: |
+          npm run build
 
       - name: Checkout Preview Project
         uses: actions/checkout@master
