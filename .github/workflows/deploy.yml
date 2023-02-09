@@ -29,7 +29,7 @@ jobs:
         run: npm init -y
       - name: Build Code
         run: |
-          run: npm run build --if-present
+          npm run build --if-present
 
       - name: Checkout Production Project
         uses: actions/checkout@master
