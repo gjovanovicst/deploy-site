@@ -24,7 +24,9 @@ jobs:
           node-version: 14
       - name: Install dependencies
         run: |
-          npm ci
+          npm install
+      - name: npm init
+        run: npm init -y
       - name: Build Code
         run: |
           npm run build
