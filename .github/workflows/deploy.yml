@@ -22,11 +22,11 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 14
-      - name: Install dependencies
-        run: |
-          npm install
-      - name: npm init
-        run: npm init -y
+      # - name: Install dependencies
+      #   run: |
+      #     npm install
+      # - name: npm init
+      #   run: npm init -y
       - name: Build Code
         run: |
           npm run build --if-present
