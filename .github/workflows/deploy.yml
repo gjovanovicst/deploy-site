@@ -57,7 +57,7 @@ jobs:
           git config user.name gjovanovicst
           git config user.email gjovanovic.st@gmail.com
           git commit -am "File Replicated from deploy-site"
-          git push
+          git push origin main --force
 
   deploy_production:
     runs-on: ubuntu-latest
@@ -103,4 +103,4 @@ jobs:
           git config user.name gjovanovicst
           git config user.email gjovanovic.st@gmail.com
           git commit -am "File Replicated from deploy-site"
-          git push
+          git push origin main --force
