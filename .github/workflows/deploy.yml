@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     # if: github.ref == 'refs/heads/develop'
     environment:
-      name: $PREVIEW_ENV
+      name: Preview
       url: https://gjovanovicst.github.io/deploy-site-preview
     steps:
       - name: Checkout Main Project
@@ -64,7 +64,7 @@ jobs:
     # if: github.ref == 'refs/heads/main'
 
     environment:
-      name: $PRODUCTION_ENV
+      name: Production
       url: https://gjovanovicst.github.io/deploy-site-production
     steps:
       - name: Checkout Main Project
