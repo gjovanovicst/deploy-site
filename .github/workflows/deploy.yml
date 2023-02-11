@@ -54,10 +54,14 @@ jobs:
         run: |
           cd ./deploy-site-preview
           git add .
-          git config user.name gjovanovicst
-          git config user.email gjovanovic.st@gmail.com
-          git commit -am "File Replicated from deploy-site"
-          git push origin main --force
+          if ! git diff-index --quiet HEAD; then
+            git config user.name gjovanovicst
+            git config user.email gjovanovic.st@gmail.com
+            git commit -am "File Replicated from deploy-site"
+            git push
+          else
+            echo "Nothing to commit, working tree clean"
+          fi
 
   deploy_production:
     runs-on: ubuntu-latest
@@ -100,7 +104,11 @@ jobs:
         run: |
           cd ./deploy-site-production
           git add .
-          git config user.name gjovanovicst
-          git config user.email gjovanovic.st@gmail.com
-          git commit -am "File Replicated from deploy-site"
-          git push origin main --force
+          if ! git diff-index --quiet HEAD; then
+            git config user.name gjovanovicst
+            git config user.email gjovanovic.st@gmail.com
+            git commit -am "File Replicated from deploy-site"
+            git push
+          else
+            echo "Nothing to commit, working tree clean"
+          fi
